@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.tobecontinued.android.model.Story;
@@ -39,6 +40,15 @@ public class DashboardActivity extends Activity {
                 intent.putExtra(StoryViewActivity.ARG_STORY_ID,
                         storyListAdapter.getItem(position).getId());
                 startActivity(intent);
+            }
+        });
+
+
+        Button btn = (Button) findViewById(R.id.newStoryBtn);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(), StoryFormActivity.class));
             }
         });
     }
