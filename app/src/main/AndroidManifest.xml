@@ -22,7 +22,15 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".DashboardActivity"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
+        <activity
+            android:name=".StoryViewActivity"
+            android:label="@string/title_activity_story_view"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tobecontinued.android.DashboardActivity" />
+        </activity>
     </application>
 
 </manifest>

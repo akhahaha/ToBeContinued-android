@@ -15,4 +15,5 @@
         completions."
     </string>
     <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_story_view">StoryViewActivity</string>
 </resources>

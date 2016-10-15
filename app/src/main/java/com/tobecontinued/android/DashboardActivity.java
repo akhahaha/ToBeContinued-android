@@ -1,14 +1,13 @@
 package com.tobecontinued.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.tobecontinued.android.model.Snippet;
 import com.tobecontinued.android.model.Story;
-import com.tobecontinued.android.model.User;
 import com.tobecontinued.android.widget.StoryListAdapter;
 
 import java.util.List;
@@ -35,8 +34,11 @@ public class DashboardActivity extends Activity {
         storyListView.setAdapter(storyListAdapter);
         storyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // TODO: Launch story viewer
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), StoryViewActivity.class);
+                intent.putExtra(StoryViewActivity.ARG_STORY_ID,
+                        storyListAdapter.getItem(position).getId());
+                startActivity(intent);
             }
         });
     }
