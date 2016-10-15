@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.tobecontinued.android.R;
 import com.tobecontinued.android.Session;
@@ -35,7 +36,16 @@ public class StoryListAdapter extends ArrayAdapter<Story> {
             convertView = inflater.inflate(R.layout.listitem_story, parent, false);
         }
 
-        // TODO: Configure list item view
+        Story story = getItem(position);
+
+        TextView storyName = (TextView) convertView.findViewById(R.id.name1);
+        storyName.setText(story.getTitle());
+
+        TextView owner = (TextView) convertView.findViewById(R.id.started1);
+        owner.setText(story.getOwner().getId());
+
+        TextView initial = (TextView) convertView.findViewById(R.id.story1);
+        initial.setText(story.getRootSnippet().getText());
 
         return convertView;
     }
