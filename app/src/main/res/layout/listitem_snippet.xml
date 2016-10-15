@@ -17,7 +17,7 @@
         android:id="@+id/time"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="315dp"
+        android:layout_marginLeft="280dp"
         android:layout_marginTop="10dp"
         android:text="1 d ago"
         android:textSize="14dp" />
