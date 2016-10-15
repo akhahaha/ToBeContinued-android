@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.tobecontinued.android.model.Story;
+import com.tobecontinued.android.widget.SnippetListAdapter;
 
 import java8.util.function.Consumer;
 import java8.util.function.Function;
@@ -17,6 +18,7 @@ public class StoryViewActivity extends Activity {
     private Story story;
 
     private ListView snippetListView;
+    private SnippetListAdapter snippetListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class StoryViewActivity extends Activity {
         setContentView(R.layout.activity_story_view);
 
         snippetListView = (ListView) findViewById(R.id.list_snippets);
+        snippetListAdapter = new SnippetListAdapter(getApplicationContext());
+        snippetListView.setAdapter(snippetListAdapter);
     }
 
     @Override
@@ -43,7 +47,9 @@ public class StoryViewActivity extends Activity {
                     @Override
                     public void accept(Story story) {
                         setTitle(story.getTitle());
-                        // TODO: Set snippet list adapter
+                        snippetListAdapter.clear();
+                        snippetListAdapter.add(story.getRootSnippet());
+                        snippetListAdapter.notifyDataSetChanged();
                     }
                 })
                 .exceptionally(new Function<Throwable, Void>() {
