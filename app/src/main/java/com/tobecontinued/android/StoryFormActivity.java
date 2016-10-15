@@ -37,7 +37,7 @@ public class StoryFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 User currUser = session.getCurrentUser();
-                Story story = Story.newInstance(currUser, titleField.getText().toString());
+                final Story story = Story.newInstance(currUser, titleField.getText().toString());
                 final Snippet snippet = Snippet.newRootInstance(currUser, story,
                         snippetField.getText().toString());
                 session.getTbcDAO().pushStory(story)
@@ -47,9 +47,16 @@ public class StoryFormActivity extends AppCompatActivity {
                                 return session.getTbcDAO().pushSnippet(snippet);
                             }
                         })
-                        .thenAccept(new Consumer<Snippet>() {
+                        .thenCompose(new Function<Snippet, CompletionStage<Story>>() {
                             @Override
-                            public void accept(Snippet snippet) {
+                            public CompletionStage<Story> apply(Snippet snippet) {
+                                story.setRootSnippet(snippet);
+                                return session.getTbcDAO().updateStory(story);
+                            }
+                        })
+                        .thenAccept(new Consumer<Story>() {
+                            @Override
+                            public void accept(Story story) {
                                 finish();
                             }
                         })
