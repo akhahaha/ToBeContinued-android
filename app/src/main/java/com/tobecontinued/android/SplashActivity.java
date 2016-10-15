@@ -1,14 +1,8 @@
 package com.tobecontinued.android;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.google.firebase.database.FirebaseDatabase;
-import com.tobecontinued.android.data.DAOManager;
-import com.tobecontinued.android.data.TbcDAOFirebombImpl;
-
-import firebomb.Firebomb;
-import firebomb.database.FirebaseManager;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,8 +11,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Initialize app here
-        Firebomb.initialize(new FirebaseManager(FirebaseDatabase.getInstance()));
-        DAOManager.setTbcDAOInstance(new TbcDAOFirebombImpl(Firebomb.getInstance()));
+        // TODO: Attempt to restore session
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }
