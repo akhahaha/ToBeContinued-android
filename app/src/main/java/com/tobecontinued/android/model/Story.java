@@ -12,7 +12,7 @@ public class Story {
     private String title;
     private Snippet rootSnippet;
 
-    public Story newInstance(User owner, String title) {
+    public static Story newInstance(User owner, String title) {
         return new Story(owner, title);
     }
 

@@ -14,11 +14,11 @@ public class Snippet {
     private Snippet parent;
     private Snippet child;
 
-    public Snippet newRootInstance(User author, Story story, String text) {
+    public static Snippet newRootInstance(User author, Story story, String text) {
         return new Snippet(author, story, text, null);
     }
 
-    public Snippet newChildInstance(User author, String text, Snippet parent) {
+    public static Snippet newChildInstance(User author, String text, Snippet parent) {
         return new Snippet(author, null, text, parent);
     }
 
