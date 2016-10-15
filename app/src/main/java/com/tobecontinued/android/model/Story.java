@@ -1,6 +1,7 @@
 package com.tobecontinued.android.model;
 
 import firebomb.annotation.Entity;
+import firebomb.annotation.GeneratedValue;
 import firebomb.annotation.Id;
 import firebomb.annotation.ManyToOne;
 import firebomb.annotation.OneToOne;
@@ -26,6 +27,7 @@ public class Story {
     }
 
     @Id
+    @GeneratedValue
     public String getId() {
         return id;
     }
