@@ -52,6 +52,7 @@ public class StoryViewActivity extends Activity {
     }
 
     private void onRefresh() {
+        snippetListAdapter.clear();
         session.getTbcDAO().getStory(storyId)
                 .thenCompose(new Function<Story, CompletionStage<Snippet>>() {
                     @Override
@@ -63,7 +64,6 @@ public class StoryViewActivity extends Activity {
                 .thenAccept(new Consumer<Snippet>() {
                     @Override
                     public void accept(Snippet rootSnippet) {
-                        snippetListAdapter.clear();
                         loadSnippets(rootSnippet);
                     }
                 })
@@ -78,6 +78,7 @@ public class StoryViewActivity extends Activity {
 
     private void loadSnippets(Snippet snippet) {
         snippetListAdapter.add(snippet);
+        snippetListAdapter.notifyDataSetChanged();
         if (snippet.getChild() != null) {
             session.getTbcDAO().getSnippet(snippet.getChild().getId())
                     .thenAccept(new Consumer<Snippet>() {
@@ -95,7 +96,6 @@ public class StoryViewActivity extends Activity {
                     });
         } else {
             tailSnippet = snippet;
-            snippetListAdapter.notifyDataSetChanged();
             addSnippetButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -111,7 +111,6 @@ public class StoryViewActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CREATE_SNIPPET:
-                onRefresh();
                 break;
         }
     }
