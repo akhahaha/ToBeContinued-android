@@ -41,6 +41,12 @@ public class DashboardActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();
+    }
+
     private void onRefresh() {
         session.getTbcDAO().getAllStories()
                 .thenAccept(new Consumer<List<Story>>() {
