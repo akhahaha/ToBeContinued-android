@@ -7,27 +7,27 @@
     <TextView
         android:id="@+id/line"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:text="WoofWoof started with this..."
-        android:textSize="16dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="70dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="280dp"
         android:layout_marginTop="10dp"
         android:text="1 d ago"
-        android:textSize="14dp" />
+        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/story3"
         android:layout_width="310dp"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
-        android:text="I found a girl at this market. She was about 8 years old, alone and wondering on the bustling and blood-brooding streets of Brazil. I though she was lost. To my surprise, she walked past me, absolutely no shit was given. Her breeze felt toxic. I threw up that evening."
-        android:textSize="16dp" />
+        android:text="Snippet content"
+        android:textSize="18dp" />
 </RelativeLayout>
