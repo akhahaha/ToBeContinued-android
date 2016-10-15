@@ -4,7 +4,10 @@ import com.tobecontinued.android.model.Snippet;
 import com.tobecontinued.android.model.Story;
 import com.tobecontinued.android.model.User;
 
+import java.util.List;
+
 import firebomb.Firebomb;
+import firebomb.criteria.Criteria;
 import java8.util.concurrent.CompletableFuture;
 
 public class TbcDAOFirebombImpl implements TbcDAO {
@@ -50,6 +53,11 @@ public class TbcDAOFirebombImpl implements TbcDAO {
     @Override
     public CompletableFuture<Story> getStory(String storyId) {
         return firebomb.find(Story.class, storyId);
+    }
+
+    @Override
+    public CompletableFuture<List<Story>> getAllStories() {
+        return firebomb.query(new Criteria<>(Story.class));
     }
 
     @Override

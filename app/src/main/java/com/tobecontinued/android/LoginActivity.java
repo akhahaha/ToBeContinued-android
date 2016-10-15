@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -213,7 +214,8 @@ public class LoginActivity extends Activity {
             showProgress(false);
 
             if (success) {
-                // TODO: Continue to dashboard
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                finish();
             } else {
                 passwordView.setError(getString(R.string.error_incorrect_password));
                 passwordView.requestFocus();

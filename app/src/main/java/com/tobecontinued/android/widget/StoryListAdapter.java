@@ -1,7 +1,6 @@
 package com.tobecontinued.android.widget;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +8,23 @@ import android.widget.ArrayAdapter;
 
 import com.tobecontinued.android.R;
 import com.tobecontinued.android.Session;
-import com.tobecontinued.android.model.Snippet;
 import com.tobecontinued.android.model.Story;
-import com.tobecontinued.android.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StoryListAdapter extends ArrayAdapter<Story> {
     private Session session;
 
-    public StoryListAdapter(Context context, int resource) {
-        super(context, resource);
+    public StoryListAdapter(Context context) {
+        this(context, new ArrayList<Story>());
+    }
+
+    public StoryListAdapter(Context context, List<Story> stories) {
+        super(context, R.layout.listitem_story, stories);
         session = Session.getInstance(context);
     }
 
-    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext()

@@ -4,6 +4,8 @@ import com.tobecontinued.android.model.Snippet;
 import com.tobecontinued.android.model.Story;
 import com.tobecontinued.android.model.User;
 
+import java.util.List;
+
 import java8.util.concurrent.CompletableFuture;
 
 public interface TbcDAO {
@@ -20,6 +22,8 @@ public interface TbcDAO {
     CompletableFuture<Story> updateStory(Story story);
 
     CompletableFuture<Story> getStory(String storyId);
+
+    CompletableFuture<List<Story>> getAllStories();
 
     CompletableFuture<Void> deleteStory(String storyId);
 
