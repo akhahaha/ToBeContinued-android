@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
@@ -13,21 +14,49 @@
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Give an enticing title"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.77"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:hint="Let's hear from your story, short or long, the sky is your limit!"
-        android:inputType="textMultiLine" />
+        android:inputType="textPersonName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
-</LinearLayout>
+        android:text="Submit"
+
+        android:layout_below="@+id/editText11"
+        android:layout_alignLeft="@+id/editText11"
+        android:layout_alignStart="@+id/editText11"
+        android:layout_marginTop="22dp" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="385dp"
+        android:layout_height="400dp"
+        android:hint="Let's hear from your story, short or long, the sky is your limit!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        "
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
+
+
+
