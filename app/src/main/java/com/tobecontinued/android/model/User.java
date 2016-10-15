@@ -1,5 +1,6 @@
 package com.tobecontinued.android.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import firebomb.annotation.Entity;
@@ -9,11 +10,19 @@ import firebomb.annotation.OneToMany;
 @Entity
 public class User {
     private String id;
-    private List<Story> stories;
-    private List<Snippet> snippets;
+    private List<Story> stories = new ArrayList<>();
+    private List<Snippet> snippets = new ArrayList<>();
+
+    public static User newInstance(String id) {
+        return new User(id);
+    }
 
     public User() {
         // Required default empty constructor
+    }
+
+    private User(String id) {
+        this.id = id;
     }
 
     @Id

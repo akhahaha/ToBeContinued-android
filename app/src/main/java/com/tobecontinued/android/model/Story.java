@@ -1,11 +1,9 @@
 package com.tobecontinued.android.model;
 
-import java.util.List;
-
 import firebomb.annotation.Entity;
 import firebomb.annotation.Id;
 import firebomb.annotation.ManyToOne;
-import firebomb.annotation.OneToMany;
+import firebomb.annotation.OneToOne;
 
 @Entity
 public class Story {
@@ -13,10 +11,18 @@ public class Story {
     private User owner;
     private String title;
     private Snippet rootSnippet;
-    private List<Snippet> snippets;
+
+    public Story newInstance(User owner, String title) {
+        return new Story(owner, title);
+    }
 
     public Story() {
         // Required default constructor
+    }
+
+    private Story(User owner, String title) {
+        this.owner = owner;
+        this.title = title;
     }
 
     @Id
@@ -45,21 +51,12 @@ public class Story {
         this.title = title;
     }
 
-    @OneToMany(foreignFieldName = "rootStory")
+    @OneToOne(foreignFieldName = "rootStory")
     public Snippet getRootSnippet() {
         return rootSnippet;
     }
 
     public void setRootSnippet(Snippet rootSnippet) {
         this.rootSnippet = rootSnippet;
-    }
-
-    @OneToMany(foreignFieldName = "story")
-    public List<Snippet> getSnippets() {
-        return snippets;
-    }
-
-    public void setSnippets(List<Snippet> snippets) {
-        this.snippets = snippets;
     }
 }

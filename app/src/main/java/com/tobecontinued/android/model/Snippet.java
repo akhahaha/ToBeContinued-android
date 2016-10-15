@@ -1,24 +1,36 @@
 package com.tobecontinued.android.model;
 
-import java.util.List;
-
 import firebomb.annotation.Entity;
 import firebomb.annotation.Id;
 import firebomb.annotation.ManyToOne;
-import firebomb.annotation.OneToMany;
+import firebomb.annotation.OneToOne;
 
 @Entity
 public class Snippet {
     private String id;
     private User author;
     private Story rootStory;
-    private Snippet parent;
     private String text;
-    private Story story;
-    private List<Snippet> children;
+    private Snippet parent;
+    private Snippet child;
+
+    public Snippet newRootInstance(User author, Story story, String text) {
+        return new Snippet(author, story, text, null);
+    }
+
+    public Snippet newChildInstance(User author, String text, Snippet parent) {
+        return new Snippet(author, null, text, parent);
+    }
 
     public Snippet() {
         // Required default constructor
+    }
+
+    private Snippet(User author, Story rootStory, String text, Snippet parent) {
+        this.author = author;
+        this.rootStory = rootStory;
+        this.text = text;
+        this.parent = parent;
     }
 
     @Id
@@ -39,22 +51,13 @@ public class Snippet {
         this.author = author;
     }
 
-    @OneToMany(foreignFieldName = "rootSnippet")
+    @OneToOne(foreignFieldName = "rootSnippet")
     public Story getRootStory() {
         return rootStory;
     }
 
     public void setRootStory(Story rootStory) {
         this.rootStory = rootStory;
-    }
-
-    @ManyToOne(foreignIndexName = "children")
-    public Snippet getParent() {
-        return parent;
-    }
-
-    public void setParent(Snippet parent) {
-        this.parent = parent;
     }
 
     public String getText() {
@@ -65,21 +68,21 @@ public class Snippet {
         this.text = text;
     }
 
-    @ManyToOne(foreignIndexName = "snippets")
-    public Story getStory() {
-        return story;
+    @OneToOne(foreignFieldName = "child")
+    public Snippet getParent() {
+        return parent;
     }
 
-    public void setStory(Story story) {
-        this.story = story;
+    public void setParent(Snippet parent) {
+        this.parent = parent;
     }
 
-    @OneToMany(foreignFieldName = "parent")
-    public List<Snippet> getChildren() {
-        return children;
+    @OneToOne(foreignFieldName = "parent")
+    public Snippet getChild() {
+        return child;
     }
 
-    public void setChildren(List<Snippet> children) {
-        this.children = children;
+    public void setChild(Snippet child) {
+        this.child = child;
     }
 }
