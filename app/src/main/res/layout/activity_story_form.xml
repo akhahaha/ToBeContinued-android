@@ -1,62 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    android:orientation="vertical"
     android:weightSum="1">
 
     <EditText
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Give an enticing title"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
-
-        android:layout_below="@+id/editText11"
         android:layout_alignLeft="@+id/editText11"
+
         android:layout_alignStart="@+id/editText11"
-        android:layout_marginTop="22dp" />
+        android:layout_below="@+id/editText11"
+        android:layout_marginTop="22dp"
+        android:text="Submit" />
 
     <EditText
         android:id="@+id/editText11"
         android:layout_width="385dp"
         android:layout_height="400dp"
-        android:hint="Let's hear from your story, short or long, the sky is your limit!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        "
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title"
         android:layout_marginTop="10dp"
         android:background="@drawable/border"
-        android:layout_below="@+id/title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:hint="Let's hear from your story, short or long, the sky is your limit!" />
 
+    <ImageButton
+        android:id="@+id/micBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/micBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
-
-
-

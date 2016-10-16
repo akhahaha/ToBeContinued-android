@@ -1,10 +1,12 @@
 package com.tobecontinued.android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.tobecontinued.android.model.Snippet;
 import com.tobecontinued.android.model.Story;
@@ -13,6 +15,7 @@ import com.tobecontinued.android.model.User;
 import java8.util.concurrent.CompletionStage;
 import java8.util.function.Consumer;
 import java8.util.function.Function;
+
 
 public class StoryFormActivity extends AppCompatActivity {
     private Session session;
@@ -67,6 +70,22 @@ public class StoryFormActivity extends AppCompatActivity {
                                 return null;
                             }
                         });
+            }
+        });
+
+        ImageButton btn1 = (ImageButton) findViewById(R.id.micBtn1);
+        btn1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(), com.tobecontinued.android.ASRActivity.class));
+            }
+        });
+
+        ImageButton btn2 = (ImageButton) findViewById(R.id.micBtn2);
+        btn2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(), com.tobecontinued.android.ASRActivity.class));
             }
         });
     }
