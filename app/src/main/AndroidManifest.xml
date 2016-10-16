@@ -36,7 +36,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tobecontinued.android.DashboardActivity" />
         </activity>
-        <activity android:name=".StoryFormActivity" />
+        <activity android:name=".StoryFormActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tobecontinued.android.StoryFormActivity" />
+        </activity>
         <activity android:name=".SnippetFormActivity" />
         <activity android:name=".ASRActivity" />
     </application>

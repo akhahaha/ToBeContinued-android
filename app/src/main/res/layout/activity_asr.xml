@@ -82,7 +82,7 @@
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/button_save"
         android:layout_below="@+id/toggle_reco"
 
         android:layout_marginTop="32dp" />

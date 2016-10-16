@@ -18,6 +18,9 @@ import java8.util.function.Function;
 
 
 public class StoryFormActivity extends AppCompatActivity {
+    public static final int REQUEST_ASR_TITLE = 0;
+    public static final int REQUEST_ASR_SNIPPET = 1;
+
     private Session session;
 
     private EditText titleField;
@@ -74,19 +77,33 @@ public class StoryFormActivity extends AppCompatActivity {
         });
 
         ImageButton btn1 = (ImageButton) findViewById(R.id.micBtn1);
-        btn1.setOnClickListener(new View.OnClickListener(){
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(), com.tobecontinued.android.ASRActivity.class));
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getApplicationContext(), ASRActivity.class),
+                        REQUEST_ASR_TITLE);
             }
         });
 
         ImageButton btn2 = (ImageButton) findViewById(R.id.micBtn2);
-        btn2.setOnClickListener(new View.OnClickListener(){
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(), com.tobecontinued.android.ASRActivity.class));
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getApplicationContext(), ASRActivity.class),
+                        REQUEST_ASR_SNIPPET);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case REQUEST_ASR_TITLE:
+                titleField.setText(data.getStringExtra("RESULT"));
+                break;
+            case REQUEST_ASR_SNIPPET:
+                snippetField.setText(data.getStringExtra("RESULT"));
+                break;
+        }
     }
 }

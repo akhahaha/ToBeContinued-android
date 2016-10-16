@@ -1,6 +1,7 @@
 package com.tobecontinued.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -48,11 +49,11 @@ public class ASRActivity extends Activity implements View.OnClickListener {
     private Audio stopEarcon;
     private Audio errorEarcon;
 
-
     private TextView logs;
     private Button clearLogs;
 
     private Button toggleReco;
+    private Button saveButton;
 
     private ProgressBar volumeBar;
 
@@ -80,6 +81,19 @@ public class ASRActivity extends Activity implements View.OnClickListener {
         //Create a session
         speechSession = Session.Factory.session(this, com.tobecontinued.android.Configuration.SERVER_URI, com.tobecontinued.android.Configuration.APP_KEY);
 
+        saveButton = (Button) findViewById(R.id.button_save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent data = new Intent();
+                System.out.println(logs.getText().toString());
+                data.putExtra("RESULT", logs.getText().toString());
+                if (getParent() == null) {
+                    setResult(Activity.RESULT_OK, data);
+                    finish();
+                }
+            }
+        });
         loadEarcons();
 
         setState(State.IDLE);
@@ -254,10 +268,4 @@ public class ASRActivity extends Activity implements View.OnClickListener {
         stopEarcon = new Audio(this, R.raw.sk_stop, com.tobecontinued.android.Configuration.PCM_FORMAT);
         errorEarcon = new Audio(this, R.raw.sk_error, com.tobecontinued.android.Configuration.PCM_FORMAT);
     }
-
-    /* Helpers */
-
-
-
-
 }
