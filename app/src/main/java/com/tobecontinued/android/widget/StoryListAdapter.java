@@ -41,11 +41,12 @@ public class StoryListAdapter extends ArrayAdapter<Story> {
         TextView storyName = (TextView) convertView.findViewById(R.id.name1);
         storyName.setText(story.getTitle());
 
-        TextView owner = (TextView) convertView.findViewById(R.id.started1);
+        TextView owner = (TextView) convertView.findViewById(R.id.owner);
         owner.setText(story.getOwner().getId());
 
         TextView initial = (TextView) convertView.findViewById(R.id.story1);
         initial.setText(story.getRootSnippet().getText());
+
 
         return convertView;
     }

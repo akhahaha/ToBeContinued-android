@@ -11,7 +11,6 @@ import com.tobecontinued.android.R;
 import com.tobecontinued.android.Session;
 import com.tobecontinued.android.model.Snippet;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +38,11 @@ public class SnippetListAdapter extends ArrayAdapter<Snippet> {
 
         Snippet snippet = getItem(position);
 
-        TextView snippettext = (TextView) convertView.findViewById(R.id.story3);
-        snippettext.setText(snippet.getText());
+        TextView snippetText = (TextView) convertView.findViewById(R.id.story3);
+        snippetText.setText(snippet.getText());
+
+        TextView authorText = (TextView) convertView.findViewById(R.id.author);
+        authorText.setText(snippet.getAuthor().getId());
 
         return convertView;
     }

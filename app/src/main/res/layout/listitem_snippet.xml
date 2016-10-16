@@ -5,29 +5,36 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/line"
-        android:layout_width="250dp"
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:text="WoofWoof started with this..."
-        android:textSize="18dp" />
+        android:text="1 d ago"
+        android:textSize="16dp"
+        android:layout_alignRight="@+id/author"
+        android:layout_alignEnd="@+id/author"
+        android:layout_below="@+id/story3" />
 
     <TextView
-        android:id="@+id/time"
-        android:layout_width="70dp"
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="10dp"
-        android:text="1 d ago"
-        android:textSize="16dp" />
+        android:gravity="right"
+        android:text="Author"
+        android:textSize="18dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_below="@+id/time"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp" />
 
     <TextView
         android:id="@+id/story3"
-        android:layout_width="310dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
         android:text="Snippet content"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
